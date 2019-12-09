@@ -103,9 +103,11 @@ var displayData = function(data, user) {
     getData();
   });
 };
-
+// this is the function that posts the data send messages
 var postData = function(message, username) {
+  return new Promise((getData,reject)=>{
   $.ajax({
+
     url: SERVER_URL,
     contentType: 'application/json',
     type: 'POST',
@@ -114,10 +116,11 @@ var postData = function(message, username) {
       text: message
     }),
     success: function(data) {
-      console.log('Success!', data);
+      getData()
     },
     error: function(data) {
-      console.log(data);
+     reject(data);
     }
   });
+})
 };

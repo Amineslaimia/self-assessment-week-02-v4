@@ -48,7 +48,13 @@
         $('#backButton').toggle();
         $('.title').text('Chat with JSON');
 
-        postData($('.userInput').val(), username);
+        postData($('.userInput').val(), username)
+        .then(data =>{
+          getData()
+        })
+        .catch(error => {
+          console.log(error)
+        })
         $('.userInput').val('');
       });
     </script>
